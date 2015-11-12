@@ -42,4 +42,37 @@ public class ContainerArrayTest {
         myContainer.remove("Bear");
         assertEquals("Should be same reference", alligator, myContainer.get(0));
     }
+    
+    @Test
+    public void testAddingMultiple() {
+    	for(int i=0; i<11; i++){
+    		myContainer.add("");
+    	}
+    }
+    
+    @Test
+    public void testObjectActuallyGone() {
+    	String alligator = "Alligator";
+    	String bear = "Bear";
+        myContainer.add("Alligator");
+        myContainer.add("Bear");
+        myContainer.remove("Bear");
+        myContainer.add("Iguana");
+        assertTrue(!myContainer.get(1).equals(bear));
+    }
+    
+    @Test
+    public void testSizePositive() {
+    	myContainer.remove("NULL");
+    	assertTrue(myContainer.size()>0);
+    }
+    
+    @Test
+    public void testSizeChangeOnlyIfPresent() {
+    	myContainer.add("Bear");
+    	int size = myContainer.size();
+    	myContainer.remove("Tiger");
+    	assertEquals(size, myContainer.size());
+    }
+    
 }

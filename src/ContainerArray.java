@@ -1,30 +1,30 @@
+import java.util.ArrayList;
+
 public class ContainerArray<E> {
-    private int initialCapacity = 10;
-    private int currentSize = 0;
-    private Object[] internalArray;
+    private ArrayList<Object> internalArray;
 
     public ContainerArray () {
         this(10);
     }
 
     public ContainerArray (int initialCapacity) {
-        internalArray = new Object[initialCapacity];
+        internalArray = new ArrayList<>(initialCapacity);
     }
 
     public void add (E element) {
-        internalArray[currentSize++] = element;
+        internalArray.add(element);
     }
 
     public int size () {
-        return currentSize;
+        return internalArray.size();
     }
 
     public void remove (E objectToRemove) {
-        currentSize--;
+    	internalArray.remove(objectToRemove);
     }
 
     @SuppressWarnings("unchecked")
     public E get (int index) {
-        return (E)internalArray[index];
+        return (E)internalArray.get(index);
     }
 }
